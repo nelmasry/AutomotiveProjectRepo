@@ -13,6 +13,10 @@
 
 # Build results
 [Dd]ebug/
+VehicleAPI/bin/Debug/
+VehicleAPI/obj/Debug/
+CustomerAPI/obj/Debug/
+VehicleAPI/bin/Debug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
