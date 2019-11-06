@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\VehicleAPI\\VehicleAPI.csproj": {}
+    "E:\\Alten_Challenge\\AltenProject\\VehicleAPI\\VehicleAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\VehicleAPI\\VehicleAPI.csproj": {
+    "E:\\Alten_Challenge\\AltenProject\\VehicleAPI\\VehicleAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\VehicleAPI\\VehicleAPI.csproj",
+        "projectUniqueName": "E:\\Alten_Challenge\\AltenProject\\VehicleAPI\\VehicleAPI.csproj",
         "projectName": "VehicleAPI",
-        "projectPath": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\VehicleAPI\\VehicleAPI.csproj",
+        "projectPath": "E:\\Alten_Challenge\\AltenProject\\VehicleAPI\\VehicleAPI.csproj",
         "packagesPath": "C:\\Users\\Nader El-Masry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\VehicleAPI\\obj\\",
+        "outputPath": "E:\\Alten_Challenge\\AltenProject\\VehicleAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

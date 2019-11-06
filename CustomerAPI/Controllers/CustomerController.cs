@@ -10,7 +10,7 @@ namespace CustomerAPI.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("getcustomers")]
         public string Get()
         {
             return "Customers list";

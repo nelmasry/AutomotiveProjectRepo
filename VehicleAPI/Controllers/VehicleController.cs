@@ -10,7 +10,7 @@ namespace VehicleAPI.Controllers
     [ApiController]
     public class VehicleController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("getvehicles")]
         public string Get()
         {
             return "Vehicles list";

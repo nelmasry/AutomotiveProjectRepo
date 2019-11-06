@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\CustomerAPI\\CustomerAPI.csproj": {}
+    "E:\\Alten_Challenge\\AltenProject\\CustomerAPI\\CustomerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\CustomerAPI\\CustomerAPI.csproj": {
+    "E:\\Alten_Challenge\\AltenProject\\CustomerAPI\\CustomerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\CustomerAPI\\CustomerAPI.csproj",
+        "projectUniqueName": "E:\\Alten_Challenge\\AltenProject\\CustomerAPI\\CustomerAPI.csproj",
         "projectName": "CustomerAPI",
-        "projectPath": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\CustomerAPI\\CustomerAPI.csproj",
+        "projectPath": "E:\\Alten_Challenge\\AltenProject\\CustomerAPI\\CustomerAPI.csproj",
         "packagesPath": "C:\\Users\\Nader El-Masry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nader El-Masry\\source\\repos\\AltenProject\\CustomerAPI\\obj\\",
+        "outputPath": "E:\\Alten_Challenge\\AltenProject\\CustomerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

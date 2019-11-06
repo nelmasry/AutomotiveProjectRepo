@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleAPI", "VehicleAPI\VehicleAPI.csproj", "{8A3537B7-3D06-4DC3-B0D1-FE84FCECCC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleAPI", "VehicleAPI\VehicleAPI.csproj", "{8A3537B7-3D06-4DC3-B0D1-FE84FCECCC91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAPI", "CustomerAPI\CustomerAPI.csproj", "{5772C799-7149-4F09-AAE1-47D793A306E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI", "CustomerAPI\CustomerAPI.csproj", "{5772C799-7149-4F09-AAE1-47D793A306E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5772C799-7149-4F09-AAE1-47D793A306E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5772C799-7149-4F09-AAE1-47D793A306E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5772C799-7149-4F09-AAE1-47D793A306E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
