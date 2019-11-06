@@ -1,0 +1,13 @@
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\bin\Debug\netcoreapp2.2\VehicleAPI.deps.json
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\bin\Debug\netcoreapp2.2\VehicleAPI.runtimeconfig.json
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\bin\Debug\netcoreapp2.2\VehicleAPI.runtimeconfig.dev.json
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\bin\Debug\netcoreapp2.2\VehicleAPI.dll
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\bin\Debug\netcoreapp2.2\VehicleAPI.pdb
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.csproj.CoreCompileInputs.cache
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.RazorAssemblyInfo.cache
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.RazorAssemblyInfo.cs
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.AssemblyInfoInputs.cache
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.AssemblyInfo.cs
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.dll
+C:\Users\Nader El-Masry\source\repos\AltenProject\VehicleAPI\obj\Debug\netcoreapp2.2\VehicleAPI.pdb
