@@ -12,8 +12,9 @@ namespace RandomPingVehicle
         //static HttpClient client = new HttpClient();
         static void Main(string[] args)
         {
+            // timer will start after 5 seconds to ping cars
             timer = new Timer(timer_Elapsed);
-            timer.Change(2000, 5000);
+            timer.Change(5000, 5000);
             Console.ReadKey();
         }
 

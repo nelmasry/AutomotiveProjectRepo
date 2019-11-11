@@ -24,11 +24,16 @@ namespace VehicleAPI.Controllers
             return _context.Vehicles;
         }
 
+        [HttpGet("getcustomervehicles/{id}")]
+        public ActionResult<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
+        {
+            return _context.Vehicles.Where(v => v.CustomerId == id).ToList();
+        }
+
         //[HttpPost("ping")]
         [HttpPut("ping/{id}")]
         public IActionResult PingVehicle(int id)
         {
-
             if (id == 0)
                 return BadRequest();
 

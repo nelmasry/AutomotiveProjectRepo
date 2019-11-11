@@ -33,6 +33,48 @@
         "PUT",
         "DELETE"
       ]
+    },
+    // API Composition
+    // aggregation
+    {
+      "DownstreamPathTemplate": "/api/vehicle/getvehicles",
+      "UpstreamPathTemplate": "/v",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53824
+        }
+      ],
+      "Key": "Vehicles"
+    },
+    {
+      "DownstreamPathTemplate": "/api/customer/getcustomers",
+      "UpstreamPathTemplate": "/c",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53881
+        }
+      ],
+      "Key": "Customers"
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "Vehicles",
+        "Customers"
+      ],
+      "UpstreamPathTemplate": "/getvehicleswithdetails",
+      "Aggregator": "APIComposer"
     }
   ],
   "GlobalConfiguration": {

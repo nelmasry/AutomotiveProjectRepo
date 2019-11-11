@@ -14,7 +14,7 @@
 # Build results
 [Dd]ebug/
 VehicleAPI/bin/Debug/
-VehicleAPI/obj/Debug/
+VehicleAPI/obj/
 CustomerAPI/obj/Debug/
 VehicleAPI/bin/Debug/
 [Dd]ebugPublic/
