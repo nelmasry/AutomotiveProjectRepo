@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using VehicleAPI.InMemoryDB;
+using VehicleAPI.Service;
 
 namespace VehicleAPI
 {
@@ -31,6 +32,7 @@ namespace VehicleAPI
             {
                 context.UseInMemoryDatabase("VehiclesInMemoryDB");
             });
+            services.AddScoped<IVehicleService, VehicleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

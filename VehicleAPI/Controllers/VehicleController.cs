@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using VehicleAPI.InMemoryDB;
+using VehicleAPI.Service;
 
 namespace VehicleAPI.Controllers
 {
@@ -13,66 +14,82 @@ namespace VehicleAPI.Controllers
     public class VehicleController : ControllerBase
     {
         private ApplicationDbContext _context;
-        public VehicleController(ApplicationDbContext context)
+        private IVehicleService _vehicleService;
+        public VehicleController(ApplicationDbContext context, IVehicleService vehicleService)
         {
-            _context = context;
-            _context.CreateVehicles();
+            _vehicleService = vehicleService;
+            _vehicleService.CreateVehicles();
         }
+
         [HttpGet("getvehicles")]
         public ActionResult<IEnumerable<Vehicle>> Get()
         {
-            return _context.Vehicles;
+            try
+            {
+                return Ok(_vehicleService.GetVehicles());
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet("getcustomervehicles/{id}")]
         public ActionResult<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
         {
-            if (id > 0)
-                return _context.Vehicles.Where(v => v.CustomerId == id).ToList();
-            return new EmptyResult();
+            try
+            {
+                if (id > 0)
+                    return Ok(_vehicleService.GetCutomerVehicles(id));
+                return new EmptyResult();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut("ping/{id}")]
         public IActionResult PingVehicle(int id)
         {
-            if (id == 0)
+            try
+            {
+                if (id == 0)
+                    return BadRequest();
+
+                var vehicle = _vehicleService.GetVehicle(id);
+                if (vehicle == null)
+                    return NotFound();
+
+                vehicle.LastPingDate = DateTime.Now;
+                _vehicleService.UpdateVehicle(vehicle);
+
+                return new NoContentResult();
+            }
+            catch
+            {
                 return BadRequest();
-
-            var vehicle = _context.Vehicles.FirstOrDefault(i => i.Id == id);
-            if (vehicle == null)
-                return NotFound();
-
-            vehicle.LastPingDate = DateTime.Now;
-
-            _context.Vehicles.Update(vehicle);
-            _context.SaveChanges();
-            return new NoContentResult();
+            }
         }
 
         [HttpGet("getvehiclesbystatus/{status}")]
-        public ActionResult<IEnumerable<Vehicle>> GetOnlinceVehicles(int status)
+        public ActionResult<IEnumerable<Vehicle>> GetVehiclesByStatus(int status)
         {
-            if (status >= 0)
+            try
             {
-                if (status == 0)
-                    return _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
-                if (status == 1)
-                    return _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
+                if (status >= 0)
+                {
+                    if (status == 0)
+                        return Ok(_vehicleService.GetOnlineVehicles());
+                    if (status == 1)
+                        return Ok(_vehicleService.GetOfflineVehicles());
+                }
+                return new EmptyResult();
             }
-            return new EmptyResult();
-        }
-
-        [HttpGet("getonlinevehicles")]
-        public ActionResult<IEnumerable<Vehicle>> GetOnlinceVehicles()
-        {
-            var onlineVehicles = _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
-            return onlineVehicles;
-        }
-        [HttpGet("getofflinevehicles")]
-        public ActionResult<IEnumerable<Vehicle>> GetOfflineVehicles()
-        {
-            var offlineVehicles = _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
-            return offlineVehicles;
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }
