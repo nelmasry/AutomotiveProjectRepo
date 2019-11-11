@@ -32,6 +32,14 @@ namespace APIGateway.APIComposition
 
         [JsonProperty("lastpingdate")]
         public DateTime LastPingDate { get; set; }
-
+    }
+    public class Customer
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("address")]
+        public string Address { get; set; }
     }
 }

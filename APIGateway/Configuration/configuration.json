@@ -35,7 +35,7 @@
       ]
     },
     // API Composition
-    // aggregation
+    // get all vehicles
     {
       "DownstreamPathTemplate": "/api/vehicle/getvehicles",
       "UpstreamPathTemplate": "/v",
@@ -65,6 +65,68 @@
         }
       ],
       "Key": "Customers"
+    },
+    // get customer vehicles
+    {
+      "DownstreamPathTemplate": "/api/vehicle/getcustomervehicles/{id}",
+      "UpstreamPathTemplate": "/v2",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53824
+        }
+      ],
+      "Key": "CVehicles"
+    },
+    {
+      "DownstreamPathTemplate": "/api/customer/{id}",
+      "UpstreamPathTemplate": "/c2",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53881
+        }
+      ],
+      "Key": "Customer"
+    },
+    // get vehicles by status
+    {
+      "DownstreamPathTemplate": "/api/vehicle/getvehiclesbystatus/{status}",
+      "UpstreamPathTemplate": "/v3",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53824
+        }
+      ],
+      "Key": "VehiclesByStatus"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Customer/getcustomers",
+      "UpstreamPathTemplate": "/c3",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53881
+        }
+      ],
+      "Key": "AllCustomers"
     }
   ],
   "Aggregates": [
@@ -74,6 +136,22 @@
         "Customers"
       ],
       "UpstreamPathTemplate": "/getvehicleswithdetails",
+      "Aggregator": "APIComposer"
+    },
+    {
+      "ReRouteKeys": [
+        "CVehicles",
+        "Customer"
+      ],
+      "UpstreamPathTemplate": "/getcustomervehicleswithdetails/{id}",
+      "Aggregator": "APIComposer"
+    },
+    {
+      "ReRouteKeys": [
+        "VehiclesByStatus",
+        "AllCustomers"
+      ],
+      "UpstreamPathTemplate": "/getvehiclesbystatuswithdetails/{status}",
       "Aggregator": "APIComposer"
     }
   ],

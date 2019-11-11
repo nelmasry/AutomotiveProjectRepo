@@ -27,10 +27,11 @@ namespace VehicleAPI.Controllers
         [HttpGet("getcustomervehicles/{id}")]
         public ActionResult<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
         {
-            return _context.Vehicles.Where(v => v.CustomerId == id).ToList();
+            if (id > 0)
+                return _context.Vehicles.Where(v => v.CustomerId == id).ToList();
+            return new EmptyResult();
         }
 
-        //[HttpPost("ping")]
         [HttpPut("ping/{id}")]
         public IActionResult PingVehicle(int id)
         {
@@ -46,6 +47,19 @@ namespace VehicleAPI.Controllers
             _context.Vehicles.Update(vehicle);
             _context.SaveChanges();
             return new NoContentResult();
+        }
+
+        [HttpGet("getvehiclesbystatus/{status}")]
+        public ActionResult<IEnumerable<Vehicle>> GetOnlinceVehicles(int status)
+        {
+            if (status >= 0)
+            {
+                if (status == 0)
+                    return _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
+                if (status == 1)
+                    return _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
+            }
+            return new EmptyResult();
         }
 
         [HttpGet("getonlinevehicles")]

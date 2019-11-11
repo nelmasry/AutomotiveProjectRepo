@@ -25,9 +25,15 @@ namespace CustomerAPI.Controllers
             return _context.Customers;
         }
         [HttpGet("{id}")]
-        public ActionResult<Customer> GetCustomer(int id)
+        public ActionResult<IEnumerable<Customer>> GetCustomer(int id)
         {
-            return _context.Customers.FirstOrDefault(c=>c.Id == id);
+            return _context.Customers.Where(c => c.Id == id).ToList();
         }
+        //[HttpGet("getcustomers/{id}")]
+        //public ActionResult<IEnumerable<Customer>> GetCustomers(string ids)
+        //{
+        //    var separated = ids.Split(new char[] { ',' });
+        //    return _context.Customers.Where(c => separated.Contains(c.Id.ToString())).ToList();
+        //}
     }
 }
