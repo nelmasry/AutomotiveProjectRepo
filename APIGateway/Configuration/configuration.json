@@ -135,7 +135,7 @@
         "Vehicles",
         "Customers"
       ],
-      "UpstreamPathTemplate": "/getvehicleswithdetails",
+      "UpstreamPathTemplate": "/api/getvehicleswithdetails",
       "Aggregator": "APIComposer"
     },
     {
@@ -143,7 +143,7 @@
         "CVehicles",
         "Customer"
       ],
-      "UpstreamPathTemplate": "/getcustomervehicleswithdetails/{id}",
+      "UpstreamPathTemplate": "/api/getcustomervehicleswithdetails/{id}",
       "Aggregator": "APIComposer"
     },
     {
@@ -151,7 +151,7 @@
         "VehiclesByStatus",
         "AllCustomers"
       ],
-      "UpstreamPathTemplate": "/getvehiclesbystatuswithdetails/{status}",
+      "UpstreamPathTemplate": "/api/getvehiclesbystatuswithdetails/{status}",
       "Aggregator": "APIComposer"
     }
   ],

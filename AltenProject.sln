@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomPingVehicle", "Random
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI.Tests", "CustomerAPI.Tests\CustomerAPI.Tests.csproj", "{F0D79173-6DB3-480D-ABB8-F2324B8671A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleAPI.Tests", "VehicleAPI.Tests\VehicleAPI.Tests.csproj", "{C96AD044-F230-4E97-ACD9-014280F44A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleAPI.Tests", "VehicleAPI.Tests\VehicleAPI.Tests.csproj", "{C96AD044-F230-4E97-ACD9-014280F44A74}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltenSPAWeb", "AltenSPAWeb\AltenSPAWeb.csproj", "{14CDDF1E-4798-40FD-B57E-37290192B46F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C96AD044-F230-4E97-ACD9-014280F44A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C96AD044-F230-4E97-ACD9-014280F44A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C96AD044-F230-4E97-ACD9-014280F44A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CDDF1E-4798-40FD-B57E-37290192B46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CDDF1E-4798-40FD-B57E-37290192B46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CDDF1E-4798-40FD-B57E-37290192B46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CDDF1E-4798-40FD-B57E-37290192B46F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
