@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI", "CustomerAPI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{8D289A9C-6A67-4E52-A5BE-8A164BBD43C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomPingVehicle", "RandomPingVehicle\RandomPingVehicle.csproj", "{B7C3D0BB-26C3-4813-9A61-40E1DCA489D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomPingVehicle", "RandomPingVehicle\RandomPingVehicle.csproj", "{B7C3D0BB-26C3-4813-9A61-40E1DCA489D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI.Tests", "CustomerAPI.Tests\CustomerAPI.Tests.csproj", "{F0D79173-6DB3-480D-ABB8-F2324B8671A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleAPI.Tests", "VehicleAPI.Tests\VehicleAPI.Tests.csproj", "{C96AD044-F230-4E97-ACD9-014280F44A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{B7C3D0BB-26C3-4813-9A61-40E1DCA489D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C3D0BB-26C3-4813-9A61-40E1DCA489D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C3D0BB-26C3-4813-9A61-40E1DCA489D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0D79173-6DB3-480D-ABB8-F2324B8671A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D79173-6DB3-480D-ABB8-F2324B8671A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D79173-6DB3-480D-ABB8-F2324B8671A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D79173-6DB3-480D-ABB8-F2324B8671A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96AD044-F230-4E97-ACD9-014280F44A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96AD044-F230-4E97-ACD9-014280F44A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96AD044-F230-4E97-ACD9-014280F44A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96AD044-F230-4E97-ACD9-014280F44A74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

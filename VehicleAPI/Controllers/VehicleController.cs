@@ -13,9 +13,8 @@ namespace VehicleAPI.Controllers
     [ApiController]
     public class VehicleController : ControllerBase
     {
-        private ApplicationDbContext _context;
         private IVehicleService _vehicleService;
-        public VehicleController(ApplicationDbContext context, IVehicleService vehicleService)
+        public VehicleController(IVehicleService vehicleService)
         {
             _vehicleService = vehicleService;
             _vehicleService.CreateVehicles();
@@ -59,7 +58,7 @@ namespace VehicleAPI.Controllers
 
                 var vehicle = _vehicleService.GetVehicle(id);
                 if (vehicle == null)
-                    return NotFound();
+                    return new EmptyResult();
 
                 vehicle.LastPingDate = DateTime.Now;
                 _vehicleService.UpdateVehicle(vehicle);
@@ -68,7 +67,7 @@ namespace VehicleAPI.Controllers
             }
             catch
             {
-                return BadRequest();
+                return BadRequest("Ping failed due to technical error.");
             }
         }
 
