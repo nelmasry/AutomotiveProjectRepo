@@ -22,7 +22,7 @@ namespace RandomPingVehicle.PingService
                     Random random = new Random();
                     int vehicleId = random.Next(1, 7); // get random vehicle id from 1 to 7 (Ids predefined in vehicle service)
                     Random boolRandom = new Random();
-                    bool isPing = boolRandom.Next(100) <= 20; // run ping with percentage 20% 
+                    bool isPing = boolRandom.Next(100) <= 50; // run ping with percentage 20% 
                     if (isPing)
                     {
                         Console.WriteLine("Ping vehicle with id : " + vehicleId);

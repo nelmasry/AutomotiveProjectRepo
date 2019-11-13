@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53824
+          "Port": 5050
         }
       ],
       "UpstreamPathTemplate": "/api/vehicle/{everything}",
@@ -23,7 +23,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53881
+          "Port": 6060
         }
       ],
       "UpstreamPathTemplate": "/api/customer/{everything}",
@@ -46,7 +46,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53824
+          "Port": 5050
         }
       ],
       "Key": "Vehicles"
@@ -61,7 +61,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53881
+          "Port": 6060
         }
       ],
       "Key": "Customers"
@@ -77,7 +77,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53824
+          "Port": 5050
         }
       ],
       "Key": "CVehicles"
@@ -92,7 +92,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53881
+          "Port": 6060
         }
       ],
       "Key": "Customer"
@@ -108,7 +108,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53824
+          "Port": 5050
         }
       ],
       "Key": "VehiclesByStatus"
@@ -123,7 +123,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 53881
+          "Port": 6060
         }
       ],
       "Key": "AllCustomers"

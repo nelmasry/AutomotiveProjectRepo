@@ -1,60 +1,76 @@
 <div class='card'>
-    <div class='card-header'>
-      {{pageTitle}}
-    </div>
-    <div class='card-body'>
-      <div class='row'>
-        <div class='col-md-2'>Filter by customer:</div>
-        <div class='col-md-4'>
-          <input type='text'
-                 [(ngModel)]='listFilter' />
-        </div>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Filter by customer:</div>
+      <div class='col-md-4'>
+        <input type='text'
+               [(ngModel)]='listFilter' />
       </div>
-      <!-- <div class='row'>
-        <div class='col-md-6'>
-          <h4>Filtered by Customer: {{listFilter}}</h4>
-        </div>
-      </div> -->
-      <p *ngIf="!filteredVehicles"><em>Loading Vehicles...</em></p>
-      <div *ngFor='let vehicle of filteredVehicles'>
-        <div class='card'>
-          <div class='card-header'>
-            <div>
-              <b>Customer : </b>{{vehicle.name}}
-            </div>
-            <div><b>Address : </b>{{vehicle.address}}</div>
+
+      <div class='col-md-2'>Filter by status:</div>
+      <div class='col-md-4'>
+        <select [(ngModel)]='statusFilter'>
+          <option selected value='all'>All</option>
+          <option value='online'>Online</option>
+          <option value='offline'>Offline</option>
+        </select>
+      </div>
+    </div>
+    <!-- <div class='row'>
+      <div class='col-md-6'>
+        <h4>Filtered by Customer: {{listFilter}}</h4>
+      </div>
+    </div> -->
+    <p *ngIf="!filteredVehicles"><em>Loading Vehicles...</em></p>
+    <div *ngFor='let vehicle of filteredVehicles'>
+      <div class='card'>
+        <div class='card-header'>
+          <div>
+            <b>Customer : </b>{{vehicle.name}}
           </div>
-          <div *ngFor='let veh of vehicle.vehicles' class='card-body'>
-          <div><b>Id : </b>{{veh.vehicleid}}</div>
-          <div><b>Registration Number : </b>{{veh.registrationNumber}}</div>
-          <div><b>Ping Date : </b>{{veh.lastpingdate | date:'medium' }}</div>
-          <!-- <div>
-            <b>Status : </b> {{veh.status}}
-          </div>   -->
+          <div><b>Address : </b>{{vehicle.address}}</div>
         </div>
+        <div class="card-body row">
+          <div *ngFor='let veh of vehicle.vehicles' class='col-md-4' style="padding-bottom: 15px;">
+
+            <div>
+              <div class="indicator" [ngClass]="(veh.isonline) ? 'online' : 'offline'"></div>
+              <div class="list-inline-item">{{ (veh.isonline) ? "Online" : "Offline" }}</div>
+            </div>
+            <div><b>Id : </b>{{veh.vehicleid}}</div>
+            <div><b>Registration Number : </b>{{veh.registrationNumber}}</div>
+            <!-- <div><b>Ping Date : </b>{{veh.lastpingdate | date:'medium' }}</div> -->
+            <!-- <div>
+              <b>Status : </b> {{veh.status}}
+            </div>   -->
+          </div>
         </div>
       </div>
-      <!-- <div class='table-responsive'>
-        <table class='table' *ngIf='vehicles && filteredVehicles.length'>
-          <thead>
-            <tr>
-              <th>Customer Id</th>
-              <th>Vehicle Id</th>
-              <th>Registration Number</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor='let vehicle of filteredVehicles'>
-              <td>{{ vehicle.customerId }}</td>
-              <td>{{ vehicle.vehicleId }}</td>
-              <td>{{ vehicle.registrationNumber }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
     </div>
+    <!-- <div class='table-responsive'>
+      <table class='table' *ngIf='vehicles && filteredVehicles.length'>
+        <thead>
+          <tr>
+            <th>Customer Id</th>
+            <th>Vehicle Id</th>
+            <th>Registration Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let vehicle of filteredVehicles'>
+            <td>{{ vehicle.customerId }}</td>
+            <td>{{ vehicle.vehicleId }}</td>
+            <td>{{ vehicle.registrationNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
   </div>
-  <div *ngIf='errorMessage'
-       class='alert alert-danger'>
-    Error: {{ errorMessage }}
-  </div>
+</div>
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

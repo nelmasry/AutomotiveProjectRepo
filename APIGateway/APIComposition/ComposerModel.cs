@@ -32,6 +32,8 @@ namespace APIGateway.APIComposition
 
         [JsonProperty("lastpingdate")]
         public DateTime LastPingDate { get; set; }
+        [JsonProperty("isonline")]
+        public bool IsOnline { get; set; }
     }
     public class Customer
     {

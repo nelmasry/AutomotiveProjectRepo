@@ -24,7 +24,7 @@ namespace VehicleAPI.InMemoryDB
                     VehicleId = "YS2R4X20005399401",
                     RegistrationNumber = "ABC123",
                     LastPingDate = DateTime.Now.AddMinutes(-5)
-                },new Vehicle
+                }, new Vehicle
                 {
                     CustomerId = 1,
                     VehicleId = "VLUR4X20009093588",
@@ -80,6 +80,13 @@ namespace VehicleAPI.InMemoryDB
         public string RegistrationNumber { get; set; }
 
         public DateTime LastPingDate { get; set; }
+        public bool IsOnline
+        {
+            get
+            {
+                return LastPingDate > DateTime.Now.AddMinutes(-1);
+            }
+        }
 
     }
 }
