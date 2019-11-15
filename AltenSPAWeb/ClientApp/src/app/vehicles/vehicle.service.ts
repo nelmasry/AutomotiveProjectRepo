@@ -16,8 +16,8 @@ export class VehicleService {
     }
 
     getvehicles(): Observable<ICustomerModel[]> {
-        var baseUrl: string = 'http://localhost:5000/';
-        this.productUrl = 'api/getvehicleswithdetails';
+        var baseUrl: string = 'http://localhost:9090/';
+        this.productUrl = baseUrl + 'api/getvehicleswithdetails';
         var result = this.http.get<ICustomerModel[]>(this.productUrl)
             .pipe(
                 tap(data => console.log('All: ' + JSON.stringify(data))),
@@ -28,8 +28,8 @@ export class VehicleService {
     }
 
     getonlinevehicles(status: number): Observable<ICustomerModel[]> {
-        var baseUrl: string = 'http://localhost:5000/';
-        this.productUrl = 'api/getvehiclesbystatuswithdetails/' + status;
+        var baseUrl: string = 'http://localhost:9090/';
+        this.productUrl = baseUrl + 'api/getvehiclesbystatuswithdetails/' + status;
 
         var result = this.http.get<ICustomerModel[]>(this.productUrl)
             .pipe(

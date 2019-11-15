@@ -22,11 +22,22 @@ namespace APIGateway
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "corsPolicy";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("*");
+                });
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddOcelot()
                 .AddSingletonDefinedAggregator<APIComposer>();
@@ -40,6 +51,7 @@ namespace APIGateway
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
             app.UseOcelot().Wait();
         }

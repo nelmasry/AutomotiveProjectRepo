@@ -22,17 +22,19 @@ namespace RandomPingVehicle
             configuration = builder.Build();
 
             Console.WriteLine("Vehicle ping Service started");
-            // timer will start after 5 seconds to ping cars
-            timer = new Timer(timer_Elapsed);
-            timer.Change(5000, 5000);
+            //// timer will start after 5 seconds to ping cars
+            //timer = new Timer(timer_Elapsed);
+            //timer.Change(5000, 5000);
+
+            RunAsync();
             Console.ReadLine();
         }
 
         private static void timer_Elapsed(object o)
         {
-            RunAsync().Wait();
+            //RunAsync().Wait();
         }
-        static async Task RunAsync()
+        static void RunAsync()
         {
             PingServiceHandler.RandomPingVehicles(configuration["APIGawtewayURL"]);
         }

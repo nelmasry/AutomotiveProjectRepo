@@ -1,0 +1,27 @@
+version: "3"
+services:
+    vehicleapi:
+        build: ./VehicleAPI
+        ports:
+            - "5050:80"
+        container_name: vehicleapicontainer
+    customerapi:
+        build: ./CustomerAPI
+        ports:
+            - "6060:80"
+        container_name: customerapicontainer
+    apigateway:
+        build: ./APIGateway
+        ports:
+            - "9090:80"
+        container_name: apigatewaycontainer
+    angularweb:
+        build: ./AltenSPAWeb
+        ports:
+            - "7070:80"
+        container_name: angularcontainer
+    pingvehicleservice:
+        build: ./RandomPingVehicle
+        container_name: pingservicecontainer
+        depends_on:
+            - apigateway
