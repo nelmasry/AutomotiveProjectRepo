@@ -11,10 +11,11 @@ namespace RandomPingVehicle.PingService
     {
         public static void RandomPingVehicles(string apiGatwayUrl)
         {
-            try
+            while (true)
             {
-                while (true)
+                try
                 {
+
                     Random random = new Random();
                     int vehicleId = random.Next(1, 7); // get random vehicle id from 1 to 7 (Ids predefined in vehicle service)
                     Random boolRandom = new Random();
@@ -34,12 +35,13 @@ namespace RandomPingVehicle.PingService
                         }
                     }
                     Thread.Sleep(5000);
+
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ping failed at " + DateTime.Now);
-                Console.WriteLine(ex.Message);
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ping failed at " + DateTime.Now);
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
