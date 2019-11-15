@@ -19,7 +19,10 @@ namespace CustomerAPI.Controllers
             _service = service;
             _service.CreateCustomers();
         }
-
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getcustomers")]
         public ActionResult<IEnumerable<Customer>> Get()
         {
@@ -32,6 +35,12 @@ namespace CustomerAPI.Controllers
                 return BadRequest();
             }
         }
+        
+        /// <summary>
+        /// Get customer by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Customer>> GetCustomer(int id)
         {

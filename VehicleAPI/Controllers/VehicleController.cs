@@ -19,7 +19,10 @@ namespace VehicleAPI.Controllers
             _vehicleService = vehicleService;
             _vehicleService.CreateVehicles();
         }
-
+        /// <summary>
+        /// Get all vehicles
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getvehicles")]
         public ActionResult<IEnumerable<Vehicle>> Get()
         {
@@ -32,7 +35,11 @@ namespace VehicleAPI.Controllers
                 return BadRequest();
             }
         }
-
+        /// <summary>
+        /// Get vehicles by customer
+        /// </summary>
+        /// <param name="id">Customer Id</param>
+        /// <returns></returns>
         [HttpGet("getcustomervehicles/{id}")]
         public ActionResult<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
         {
@@ -47,7 +54,35 @@ namespace VehicleAPI.Controllers
                 return BadRequest();
             }
         }
-
+        /// <summary>
+        /// Get vehicles by status (Online/Offline)
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        [HttpGet("getvehiclesbystatus/{status}")]
+        public ActionResult<IEnumerable<Vehicle>> GetVehiclesByStatus(int status)
+        {
+            try
+            {
+                if (status >= 0)
+                {
+                    if (status == 0)
+                        return Ok(_vehicleService.GetOnlineVehicles());
+                    if (status == 1)
+                        return Ok(_vehicleService.GetOfflineVehicles());
+                }
+                return new EmptyResult();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        /// <summary>
+        /// Simulate vehicle send status request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPut("ping/{id}")]
         public IActionResult PingVehicle(int id)
         {
@@ -68,26 +103,6 @@ namespace VehicleAPI.Controllers
             catch
             {
                 return BadRequest("Ping failed due to technical error.");
-            }
-        }
-
-        [HttpGet("getvehiclesbystatus/{status}")]
-        public ActionResult<IEnumerable<Vehicle>> GetVehiclesByStatus(int status)
-        {
-            try
-            {
-                if (status >= 0)
-                {
-                    if (status == 0)
-                        return Ok(_vehicleService.GetOnlineVehicles());
-                    if (status == 1)
-                        return Ok(_vehicleService.GetOfflineVehicles());
-                }
-                return new EmptyResult();
-            }
-            catch
-            {
-                return BadRequest();
             }
         }
     }
