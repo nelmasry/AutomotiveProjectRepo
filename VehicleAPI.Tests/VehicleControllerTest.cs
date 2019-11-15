@@ -74,7 +74,7 @@ namespace CustomerAPI.Tests
             var model = okObjectResult.Value as IEnumerable<Vehicle>;
             Assert.NotNull(model);
             int count = model.Count();
-            Assert.Equal(1, count);
+            Assert.Equal(7, count);
         }
         [Fact]
         public void GetCutomerVehicles()
