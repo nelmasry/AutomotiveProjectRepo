@@ -45,7 +45,7 @@ namespace APIGateway.APIComposition
                     new List<KeyValuePair<string, IEnumerable<string>>>(), "OK");
                 return Task.FromResult(response);
             }
-            catch(Exception ex)
+            catch
             {
                 DownstreamResponse response =
                     new DownstreamResponse(null, HttpStatusCode.BadRequest,

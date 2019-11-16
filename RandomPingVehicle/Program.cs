@@ -12,7 +12,6 @@ namespace RandomPingVehicle
 {
     class Program
     {
-        private static Timer timer;
         private static IConfigurationRoot configuration;
         static void Main(string[] args)
         {
