@@ -21,17 +21,26 @@ namespace CustomerAPI.Service
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Create all customers in memoryDB customers at first launch
+        /// </summary>
         public void CreateCustomers()
         {
             _context.CreateCustomers();
         }
-
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Customer> GetCustomers()
         {
             return _context.Customers;
         }
-
+        /// <summary>
+        /// Get customer by id
+        /// </summary>
+        /// <param name="id">Customer Id</param>
+        /// <returns></returns>
         public IEnumerable<Customer> GetCutomer(int id)
         {
             return _context.Customers.Where(c => c.Id == id).ToList();

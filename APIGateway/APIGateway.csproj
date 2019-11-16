@@ -15,4 +15,8 @@
     <PackageReference Include="Ocelot" Version="13.5.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

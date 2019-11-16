@@ -12,15 +12,16 @@ using System.Threading.Tasks;
 
 namespace APIGateway.APIComposition
 {
+    /// <summary>
+    /// Composer class for requests aggregation from microservices
+    /// </summary>
     public class APIComposer : IDefinedAggregator
     {
-
-        /*
-         * http://localhost:5000/getvehicleswithdetails
-         * http://localhost:5000/getcustomervehicleswithdetails/2
-         * http://localhost:5000/getvehiclesbystatuswithdetails/1 online
-         * http://localhost:5000/getvehiclesbystatuswithdetails/0 offline
-         */
+        /// <summary>
+        /// Aggreaget microservices response objects
+        /// </summary>
+        /// <param name="responses"></param>
+        /// <returns></returns>
         public Task<DownstreamResponse> Aggregate(List<DownstreamContext> responses)
         {
             try
@@ -52,7 +53,12 @@ namespace APIGateway.APIComposition
                 return Task.FromResult(response);
             }
         }
-
+        /// <summary>
+        /// Aggregate objects returned from microservices in one object to be sent to client
+        /// </summary>
+        /// <param name="vehiclesContent"></param>
+        /// <param name="customersContent"></param>
+        /// <returns></returns>
         private List<ComposerModel> CreateComposerModel(Task<string> vehiclesContent, Task<string> customersContent)
         {
             List<ComposerModel> composerModel = new List<ComposerModel>();

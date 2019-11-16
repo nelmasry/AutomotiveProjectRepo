@@ -76,9 +76,7 @@ namespace VehicleAPI.InMemoryDB
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public string VehicleId { get; set; }
-
         public string RegistrationNumber { get; set; }
-
         public DateTime LastPingDate { get; set; }
         public bool IsOnline
         {
