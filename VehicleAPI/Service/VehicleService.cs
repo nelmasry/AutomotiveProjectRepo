@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VehicleAPI.InMemoryDB;
 
 namespace VehicleAPI.Service
 {
     public interface IVehicleService
     {
-        IEnumerable<Vehicle> GetVehicles();
-        IEnumerable<Vehicle> GetCutomerVehicles(int id);
+        Task<IEnumerable<Vehicle>> GetVehicles();
+        Task<IEnumerable<Vehicle>> GetCutomerVehicles(int id);
 
-        Vehicle GetVehicle(int id);
+        Task<Vehicle> GetVehicle(int id);
 
-        void UpdateVehicle(Vehicle vehicle);
+        Task UpdateVehicle(Vehicle vehicle);
 
-        IEnumerable<Vehicle> GetOnlineVehicles();
+        Task<IEnumerable<Vehicle>> GetOnlineVehicles();
 
-        IEnumerable<Vehicle> GetOfflineVehicles();
+        Task<IEnumerable<Vehicle>> GetOfflineVehicles();
         void CreateVehicles();
     }
     public class VehicleService : IVehicleService
@@ -42,52 +43,52 @@ namespace VehicleAPI.Service
         /// Get all vehicles
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Vehicle> GetVehicles()
+        public async Task<IEnumerable<Vehicle>> GetVehicles()
         {
-            return _context.Vehicles;
+            return await _context.Vehicles.ToListAsync();
         }
         /// <summary>
         /// Get customer vehicles
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IEnumerable<Vehicle> GetCutomerVehicles(int id)
+        public async Task<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
         {
-            return _context.Vehicles.Where(v => v.CustomerId == id).ToList();
+            return await _context.Vehicles.Where(v => v.CustomerId == id).ToListAsync();
         }
         /// <summary>
         /// Get vehicle by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Vehicle GetVehicle(int id)
+        public async Task<Vehicle> GetVehicle(int id)
         {
-            return _context.Vehicles.FirstOrDefault(i => i.Id == id);
+            return await Task.FromResult(_context.Vehicles.FirstOrDefault(i => i.Id == id));
         }
         /// <summary>
         /// Update vehicle
         /// </summary>
         /// <param name="vehicle"></param>
-        public void UpdateVehicle(Vehicle vehicle)
+        public async Task UpdateVehicle(Vehicle vehicle)
         {
             _context.Vehicles.Update(vehicle);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
         /// <summary>
         /// Get online vehicles
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Vehicle> GetOnlineVehicles()
+        public async Task<IEnumerable<Vehicle>> GetOnlineVehicles()
         {
-            return _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
+            return await _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToListAsync();
         }
         /// <summary>
         /// Get offline vehicles
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Vehicle> GetOfflineVehicles()
+        public async Task<IEnumerable<Vehicle>> GetOfflineVehicles()
         {
-            return _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
+            return await _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToListAsync();
         }
     }
 }

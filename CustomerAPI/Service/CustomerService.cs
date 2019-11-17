@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CustomerAPI.InMemoryDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomerAPI.Service
 {
     public interface ICustomerService
     {
-        IEnumerable<Customer> GetCustomers();
-        IEnumerable<Customer> GetCutomer(int id);
+        Task<IEnumerable<Customer>> GetCustomers();
+        Task<IEnumerable<Customer>> GetCutomer(int id);
         void CreateCustomers();
     }
     public class CustomerService : ICustomerService
@@ -32,18 +33,18 @@ namespace CustomerAPI.Service
         /// Get all customers
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Customer> GetCustomers()
+        public async Task<IEnumerable<Customer>> GetCustomers()
         {
-            return _context.Customers;
+            return await _context.Customers.ToListAsync();
         }
         /// <summary>
         /// Get customer by id
         /// </summary>
         /// <param name="id">Customer Id</param>
         /// <returns></returns>
-        public IEnumerable<Customer> GetCutomer(int id)
+        public async Task<IEnumerable<Customer>> GetCutomer(int id)
         {
-            return _context.Customers.Where(c => c.Id == id).ToList();
+            return await _context.Customers.Where(c => c.Id == id).ToListAsync();
         }
     }
 }

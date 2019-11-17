@@ -24,11 +24,11 @@ namespace CustomerAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("getcustomers")]
-        public ActionResult<IEnumerable<Customer>> Get()
+        public async Task<ActionResult<IEnumerable<Customer>>> Get()
         {
             try
             {
-                return Ok(_service.GetCustomers());
+                return Ok(await _service.GetCustomers());
             }
             catch
             {
@@ -42,11 +42,11 @@ namespace CustomerAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer(int id)
         {
             try
             {
-                return Ok(_service.GetCutomer(id));
+                return Ok(await _service.GetCutomer(id));
             }
             catch
             {

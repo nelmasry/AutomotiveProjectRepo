@@ -24,11 +24,11 @@ namespace VehicleAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("getvehicles")]
-        public ActionResult<IEnumerable<Vehicle>> Get()
+        public async Task<ActionResult<IEnumerable<Vehicle>>> Get()
         {
             try
             {
-                return Ok(_vehicleService.GetVehicles());
+                return Ok(await _vehicleService.GetVehicles());
             }
             catch
             {
@@ -41,12 +41,12 @@ namespace VehicleAPI.Controllers
         /// <param name="id">Customer Id</param>
         /// <returns></returns>
         [HttpGet("getcustomervehicles/{id}")]
-        public ActionResult<IEnumerable<Vehicle>> GetCutomerVehicles(int id)
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetCutomerVehicles(int id)
         {
             try
             {
                 if (id > 0)
-                    return Ok(_vehicleService.GetCutomerVehicles(id));
+                    return Ok(await _vehicleService.GetCutomerVehicles(id));
                 return new EmptyResult();
             }
             catch
@@ -60,16 +60,16 @@ namespace VehicleAPI.Controllers
         /// <param name="status">0 to get offline and 1 to get online vehicles</param>
         /// <returns></returns>
         [HttpGet("getvehiclesbystatus/{status}")]
-        public ActionResult<IEnumerable<Vehicle>> GetVehiclesByStatus(int status)
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehiclesByStatus(int status)
         {
             try
             {
                 if (status >= 0)
                 {
                     if (status == 0)
-                        return Ok(_vehicleService.GetOfflineVehicles());
+                        return Ok(await _vehicleService.GetOfflineVehicles());
                     if (status == 1)
-                        return Ok(_vehicleService.GetOnlineVehicles());
+                        return Ok(await _vehicleService.GetOnlineVehicles());
                 }
                 return new EmptyResult();
             }
@@ -84,19 +84,19 @@ namespace VehicleAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("ping/{id}")]
-        public IActionResult PingVehicle(int id)
+        public async Task<IActionResult> PingVehicle(int id)
         {
             try
             {
                 if (id == 0)
                     return BadRequest();
 
-                var vehicle = _vehicleService.GetVehicle(id);
+                var vehicle = await _vehicleService.GetVehicle(id);
                 if (vehicle == null)
                     return new EmptyResult();
 
                 vehicle.LastPingDate = DateTime.Now;
-                _vehicleService.UpdateVehicle(vehicle);
+                await _vehicleService.UpdateVehicle(vehicle);
 
                 return new NoContentResult();
             }

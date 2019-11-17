@@ -52,6 +52,6 @@ export class VehicleService {
             errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
         }
         console.error(errorMessage);
-        return throwError(errorMessage);
+        return throwError("Failed to load vehicles due to technical issues, please check console log for more details.");
     }
 }

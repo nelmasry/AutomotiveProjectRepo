@@ -1,28 +1,27 @@
-
 using CustomerAPI.Controllers;
 using CustomerAPI.InMemoryDB;
 using CustomerAPI.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace CustomerAPI.Tests
+namespace CustomerAPI.UnitTests
 {
     public class CustomerControllerTest
     {
         [Fact]
-        public void GetCustomers()
+        public async Task Getcustomers_all_success()
         {
             IEnumerable<Customer> fakeCustomers = CreateFakeCustomers();
             var mockService = new Mock<ICustomerService>();
-            mockService.Setup(s => s.GetCustomers()).Returns(fakeCustomers);
+            mockService.Setup(s => s.GetCustomers()).Returns(Task.FromResult(fakeCustomers));
 
             CustomerController controller = new CustomerController(mockService.Object);
-            var okResult = controller.Get();
+            var okResult = await controller.Get();
 
             var okObjectResult = okResult.Result as OkObjectResult;
             Assert.NotNull(okObjectResult);
@@ -33,7 +32,7 @@ namespace CustomerAPI.Tests
         }
 
         [Fact]
-        public void GetCustomer()
+        public async Task Getcustomer_existingcustomer_success()
         {
             IEnumerable<Customer> fakeCustomers = new List<Customer>() {
             new Customer
@@ -43,10 +42,10 @@ namespace CustomerAPI.Tests
                 }
             };
             var mockService = new Mock<ICustomerService>();
-            mockService.Setup(s => s.GetCutomer(2)).Returns(fakeCustomers);
+            mockService.Setup(s => s.GetCutomer(2)).Returns(Task.FromResult(fakeCustomers));
 
             CustomerController controller = new CustomerController(mockService.Object);
-            var okResult = controller.GetCustomer(2);
+            var okResult = await controller.GetCustomer(2);
 
             var okObjectResult = okResult.Result as OkObjectResult;
             Assert.NotNull(okObjectResult);
@@ -59,7 +58,7 @@ namespace CustomerAPI.Tests
 
         private static IEnumerable<Customer> CreateFakeCustomers()
         {
-            return new List<Customer>() {
+            var customers = new List<Customer>() {
             new Customer
                 {
                     Name = "Kalles Grustransporter AB",
@@ -75,6 +74,7 @@ namespace CustomerAPI.Tests
                     Address = "Budgetvägen 1, 333 33 Uppsala"
                 }
             };
+            return customers;
         }
     }
 }
