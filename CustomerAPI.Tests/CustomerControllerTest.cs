@@ -17,22 +17,7 @@ namespace CustomerAPI.Tests
         [Fact]
         public void GetCustomers()
         {
-            IEnumerable<Customer> fakeCustomers = new List<Customer>() {
-            new Customer
-                {
-                    Name = "Kalles Grustransporter AB",
-                    Address = "Cementvägen 8, 111 11 Södertälje"
-                },new Customer
-                {
-                    Name = "Johans Bulk AB",
-                    Address = "Balkvägen 12, 222 22 Stockholm"
-                },
-                new Customer
-                {
-                    Name = "Haralds Värdetransporter AB",
-                    Address = "Budgetvägen 1, 333 33 Uppsala"
-                }
-            };
+            IEnumerable<Customer> fakeCustomers = CreateFakeCustomers();
             var mockService = new Mock<ICustomerService>();
             mockService.Setup(s => s.GetCustomers()).Returns(fakeCustomers);
 
@@ -46,6 +31,7 @@ namespace CustomerAPI.Tests
             int count = model.Count();
             Assert.Equal(3, count);
         }
+
         [Fact]
         public void GetCustomer()
         {
@@ -69,6 +55,26 @@ namespace CustomerAPI.Tests
             int count = model.Count();
             Assert.Equal(1, count);
             Assert.Equal("Johans Bulk AB", model.FirstOrDefault().Name);
+        }
+
+        private static IEnumerable<Customer> CreateFakeCustomers()
+        {
+            return new List<Customer>() {
+            new Customer
+                {
+                    Name = "Kalles Grustransporter AB",
+                    Address = "Cementvägen 8, 111 11 Södertälje"
+                },new Customer
+                {
+                    Name = "Johans Bulk AB",
+                    Address = "Balkvägen 12, 222 22 Stockholm"
+                },
+                new Customer
+                {
+                    Name = "Haralds Värdetransporter AB",
+                    Address = "Budgetvägen 1, 333 33 Uppsala"
+                }
+            };
         }
     }
 }

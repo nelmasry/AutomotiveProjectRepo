@@ -57,7 +57,7 @@ namespace VehicleAPI.Controllers
         /// <summary>
         /// Get vehicles by status (Online/Offline)
         /// </summary>
-        /// <param name="status"></param>
+        /// <param name="status">0 to get offline and 1 to get online vehicles</param>
         /// <returns></returns>
         [HttpGet("getvehiclesbystatus/{status}")]
         public ActionResult<IEnumerable<Vehicle>> GetVehiclesByStatus(int status)
@@ -67,9 +67,9 @@ namespace VehicleAPI.Controllers
                 if (status >= 0)
                 {
                     if (status == 0)
-                        return Ok(_vehicleService.GetOnlineVehicles());
-                    if (status == 1)
                         return Ok(_vehicleService.GetOfflineVehicles());
+                    if (status == 1)
+                        return Ok(_vehicleService.GetOnlineVehicles());
                 }
                 return new EmptyResult();
             }

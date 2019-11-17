@@ -79,7 +79,7 @@ namespace VehicleAPI.Service
         /// <returns></returns>
         public IEnumerable<Vehicle> GetOnlineVehicles()
         {
-            return _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
+            return _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
         }
         /// <summary>
         /// Get offline vehicles
@@ -87,7 +87,7 @@ namespace VehicleAPI.Service
         /// <returns></returns>
         public IEnumerable<Vehicle> GetOfflineVehicles()
         {
-            return _context.Vehicles.Where(v => v.LastPingDate > DateTime.Now.AddMinutes(-1)).ToList();
+            return _context.Vehicles.Where(v => v.LastPingDate < DateTime.Now.AddMinutes(-1)).ToList();
         }
     }
 }

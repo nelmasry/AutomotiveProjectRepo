@@ -10,15 +10,15 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class VehicleService {
 
-    private productUrl = 'api/products/products.json'
+    private vehicleUrl = ''
     constructor(private http: HttpClient) {
 
     }
 
     getvehicles(): Observable<ICustomerModel[]> {
         var baseUrl: string = 'http://localhost:9090/';
-        this.productUrl = baseUrl + 'api/getvehicleswithdetails';
-        var result = this.http.get<ICustomerModel[]>(this.productUrl)
+        this.vehicleUrl = baseUrl + 'api/getvehicleswithdetails';
+        var result = this.http.get<ICustomerModel[]>(this.vehicleUrl)
             .pipe(
                 tap(data => console.log('All: ' + JSON.stringify(data))),
                 catchError(this.handleError)
@@ -29,9 +29,9 @@ export class VehicleService {
 
     getonlinevehicles(status: number): Observable<ICustomerModel[]> {
         var baseUrl: string = 'http://localhost:9090/';
-        this.productUrl = baseUrl + 'api/getvehiclesbystatuswithdetails/' + status;
+        this.vehicleUrl = baseUrl + 'api/getvehiclesbystatuswithdetails/' + status;
 
-        var result = this.http.get<ICustomerModel[]>(this.productUrl)
+        var result = this.http.get<ICustomerModel[]>(this.vehicleUrl)
             .pipe(
                 tap(data => console.log('All: ' + JSON.stringify(data))),
                 catchError(this.handleError)
