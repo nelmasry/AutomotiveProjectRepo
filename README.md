@@ -50,9 +50,9 @@ Angular Application for showing an overview of all vehicles together with their 
     
       -	Ex. http://localhost:9090/api/customer/getcustomers
       
-    -	Customer service : http://localhost:5050/
+    -	Customer service : http://localhost:5050/swagger/index.html
       
-    -	Vehicle service : http://localhost:6060/
+    -	Vehicle service : http://localhost:6060/swagger/index.html
     
     -	If containers are up not in background mode, ping service logs will be shown in every ping with vehicle Id
     
