@@ -22,6 +22,7 @@ namespace RandomPingVehicle.PingService
             {
                 try
                 {
+                    
                     Random random = new Random();
                     int vehicleId = random.Next(1, 7); // get random vehicle id from 1 to 7 (Ids predefined in vehicle service)
                     Random boolRandom = new Random();
