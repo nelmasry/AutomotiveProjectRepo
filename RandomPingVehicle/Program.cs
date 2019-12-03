@@ -20,7 +20,7 @@ namespace RandomPingVehicle
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             configuration = builder.Build();
 
-            //Console.WriteLine("Vehicle ping Service started");
+            Console.WriteLine("Vehicle ping Service started");
 
             SimulatePingVehicles();
             Console.ReadLine();
