@@ -23,50 +23,53 @@ namespace CustomerAPI.IntegrationTests
         }
 
         [Fact]
-        public void Getcustomers_all_success()
+        public async Task Getcustomers_all_success()
         {
             Task<HttpResponseMessage> httpResponse = Client.GetAsync("api/customer/getcustomers");
-            httpResponse.Result.EnsureSuccessStatusCode();
+            //await httpResponse.EnsureSuccessStatusCode();
 
             
-            var stringResponse = httpResponse.Result.Content.ReadAsStringAsync().Result;
-            var customers = JsonConvert.DeserializeObject<IEnumerable<Customer>>(stringResponse);
+            var stringResponse = (await httpResponse).Content.ReadAsStringAsync();
+            var customers = JsonConvert.DeserializeObject<IEnumerable<Customer>>(await stringResponse);
 
-            Assert.Equal(HttpStatusCode.OK, httpResponse.Result.StatusCode);
+            var res = await httpResponse;
+            Assert.Equal(HttpStatusCode.OK, res.StatusCode);
             Assert.NotNull(customers);
             int count = customers.Count();
             Assert.Equal(3, count);
         }
 
         [Fact]
-        public void Getcustomer_existingcustomer_success()
+        public async Task Getcustomer_existingcustomer_success()
         {
             int fakeCustomerId = 3;
             Task<HttpResponseMessage> httpResponse = Client.GetAsync($"api/customer/{fakeCustomerId}");
-            httpResponse.Result.EnsureSuccessStatusCode();
+            //httpResponse.Result.EnsureSuccessStatusCode();
 
             
-            var stringResponse = httpResponse.Result.Content.ReadAsStringAsync().Result;
-            var customer = JsonConvert.DeserializeObject<IEnumerable<Customer>>(stringResponse);
+            var stringResponse = (await httpResponse).Content.ReadAsStringAsync();
+            var customer = JsonConvert.DeserializeObject<IEnumerable<Customer>>(await stringResponse);
 
-            Assert.Equal(HttpStatusCode.OK, httpResponse.Result.StatusCode);
+            var res = await httpResponse;
+            Assert.Equal(HttpStatusCode.OK, res.StatusCode);
             Assert.NotNull(customer);
             int count = customer.Count();
             Assert.Equal(1,count);
             Assert.Equal(fakeCustomerId, customer.FirstOrDefault().Id);
         }
         [Fact]
-        public void Getcustomer_nonexistingcustomer_emptyresult()
+        public async Task Getcustomer_nonexistingcustomer_emptyresult()
         {
             int fakeCustomerId = 40;
             Task<HttpResponseMessage> httpResponse = Client.GetAsync($"api/customer/{fakeCustomerId}");
-            httpResponse.Result.EnsureSuccessStatusCode();
+            (await httpResponse).EnsureSuccessStatusCode();
 
             
-            var stringResponse = httpResponse.Result.Content.ReadAsStringAsync().Result;
-            var customer = JsonConvert.DeserializeObject<IEnumerable<Customer>>(stringResponse);
+            var stringResponse = (await httpResponse).Content.ReadAsStringAsync();
+            var customer = JsonConvert.DeserializeObject<IEnumerable<Customer>>(await stringResponse);
 
-            Assert.Equal(HttpStatusCode.OK, httpResponse.Result.StatusCode);
+            var res = await httpResponse;
+            Assert.Equal(HttpStatusCode.OK, res.StatusCode);
             Assert.NotNull(customer);
             int count = customer.Count();
             Assert.Equal(0, count);

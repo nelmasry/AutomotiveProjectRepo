@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace RandomPingVehicle.PingService
 {
@@ -13,7 +14,7 @@ namespace RandomPingVehicle.PingService
         /// Simulate vehicles send status requests
         /// </summary>
         /// <param name="apiGatwayUrl"></param>
-        public static void RandomPingVehicles(string apiGatwayUrl)
+        public static async Task RandomPingVehicles(string apiGatwayUrl)
         {
             // start after 5 seconds
             Thread.Sleep(5000);
@@ -34,7 +35,7 @@ namespace RandomPingVehicle.PingService
                             client.DefaultRequestHeaders.Accept.Add(
                                 new MediaTypeWithQualityHeaderValue("application/json"));
                             Console.WriteLine("Ping vehicle with id : " + vehicleId);
-                            HttpResponseMessage response = client.PutAsync($"api/vehicle/ping/{vehicleId}", null).Result;
+                            HttpResponseMessage response = await client.PutAsync($"api/vehicle/ping/{vehicleId}", null);
                             response.EnsureSuccessStatusCode();
                             Console.WriteLine("Ping succeeded at " + DateTime.Now);
                         }
