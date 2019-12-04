@@ -22,6 +22,7 @@ namespace RandomPingVehicle
 
             Console.WriteLine("Vehicle ping Service started");
 
+
             SimulatePingVehicles();
             Console.ReadLine();
         }
