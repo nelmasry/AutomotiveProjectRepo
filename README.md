@@ -1,4 +1,4 @@
-# Alten Challenge project by Nader
+# Automotive project by Nader
 
 ## Table of Contents
 1. [About the Project](#about-the-project)
