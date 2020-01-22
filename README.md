@@ -23,15 +23,7 @@ Angular Application for showing an overview of all vehicles together with their 
   -	Docker Compose 1.24.1
   
 •	Steps:
-
-  -	New email has been created for testing challenge components like Azure, email credentials are sent via email
   
-    -	Email have access to GitHub repository and can push changes
-    
-    -	Email can login to azure project via GitHub login
-    
-    -	SonarCloud access to check code analysis reports
-    
   -	Clone solution from GitHub repository
   
   -	Open solution with visual studio (minimum version 2017)
